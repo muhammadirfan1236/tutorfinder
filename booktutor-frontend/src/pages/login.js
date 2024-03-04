@@ -8,6 +8,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import "../statics/css/login.css"
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import ImageOne from "../statics/images/imageone.jpg"
 
 const Login = () => {
     const history = useHistory();
@@ -144,7 +145,7 @@ const Login = () => {
        </div>
        <div className="col-lg-6 col-sm-12 h-100 px-0" >
            <div className="image" style={{height:"100%" , width:"100%"}}>
-               <img src={BackgroundBg} alt="" className='w-100'  style={{height:"100%" , width:"100%"}} />
+               <img src={ImageOne} alt="" className='w-100'  style={{height:"100%" , width:"100%"}} />
            </div>
        </div>
      </div>
