@@ -11,7 +11,7 @@ const Home = () => {
     const [teachers , setTeachers] = useState([]);
 
     const teachersData = () => {
-        axios.get("http://localhost:9000/api/teachers/all").then
+        axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/all`).then
         ((res) => {
               console.log("abc" , res)
             setTeachers(res?.data)

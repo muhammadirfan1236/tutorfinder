@@ -7,6 +7,7 @@ import { CiLock } from 'react-icons/ci';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Logo from "../statics/images/mainlogo.png"
 import { IoMdArrowBack } from "react-icons/io";
+import ImageOne from "../statics/images/imageone.jpg"
 
 import "../statics/css/login.css"
 
@@ -53,7 +54,7 @@ const SignUp = () => {
         mainData.append("gender" , formValues?.gender ? formValues?.gender : "")
         mainData.append("image" , formValues?.image ? formValues?.image : null)
 
-        axios.post("http://localhost:9000/api/students/create", mainData).then
+        axios.post(`${process.env.REACT_APP_BASE_URL}/api/students/create`, mainData).then
             ((res) => {
                 console.log("res", res);
                 toast.success(res.data?.message);
@@ -80,7 +81,7 @@ const SignUp = () => {
         mainData.append("description" , formValues?.description ? formValues?.description : "")
         mainData.append("location" , formValues?.location ? formValues?.location : "")
         mainData.append("image" , formValues?.image ? formValues?.image : null)
-        axios.post("http://localhost:9000/api/teachers/create", mainData).then
+        axios.post(`${process.env.REACT_APP_BASE_URL}/api/teachers/create`, mainData).then
             ((res) => {
                 console.log("umar", res);
                 toast.success(res.data?.message);
@@ -181,7 +182,36 @@ const SignUp = () => {
                                            <label htmlFor="" className='fs-4'>Subject <span style={{ color: "red" }}>*</span> </label>
                                            <div className='input-div'>
                                                <CiLock className='fs-4' />
-                                               <input name='subject' className='fs-4' onChange={handleChange} type="text" placeholder='Enter Subject' />
+                                               <select name="subject" className='fs-4' onChange={handleChange} id="" style={{ background: "#000" }}>
+                                                       <option value="">Select Subject</option>
+                                                       <option value="English">English</option>
+                                                       <option value="Mathematics">Mathematics</option>
+                                                       <option value="Science">Science</option>
+                                                       <option value="Social Studies">Social Studies</option>
+                                                       <option value="History">History</option>
+                                                       <option value="Geography">Geography</option>
+                                                       <option value="Physics">Physics</option>
+                                                       <option value="Chemistry">Chemistry</option>
+                                                       <option value="Biology">Biology</option>
+                                                       <option value="Environmental Science">Environmental Science</option>
+                                                       <option value="Physical Education">Physical Education</option>
+                                                       <option value="Health Education">Health Education</option>
+                                                       <option value="Foreign Languages (e.g., Spanish, French, German)">Foreign Languages (e.g., Spanish, French, German)</option>
+                                                       <option value="Computer Science">Computer Science</option>
+                                                       <option value="Information Technology">Information Technology</option>
+                                                       <option value="Arts (e.g., Visual Arts, Performing Arts)">Arts (e.g., Visual Arts, Performing Arts)</option>
+                                                       <option value="Music">Music</option>
+                                                       <option value="Economics">Economics</option>
+                                                       <option value="Business Studies">Business Studies</option>
+                                                       <option value="Home Economics">Home Economics</option>
+                                                       <option value="Philosophy">Philosophy</option>
+                                                       <option value="Psychology">Psychology</option>
+                                                       <option value="Sociology">Sociology</option>
+                                                       <option value="Government">Government</option>
+                                                       <option value="Religious Studies">Religious Studies</option>
+                                                       <option value="Technical Education">Technical Education</option>
+
+                                                   </select>
                                            </div>
                                        </div>
                                        <div className="d-flex flex-column gap-1 text-white mt-3">
@@ -387,7 +417,7 @@ const SignUp = () => {
                </div>
                <div className="col-lg-6 col-sm-12 h-100 px-0" >
                    <div className="image" style={{ height: "100%", width: "100%" }}>
-                       <img src={BackgroundBg} alt="" className='w-100' style={{ height: "100%", width: "100%" }} />
+                       <img src={ImageOne} alt="" className='w-100' style={{ height: "100%", width: "100%" }} />
                    </div>
                </div>
            </div>

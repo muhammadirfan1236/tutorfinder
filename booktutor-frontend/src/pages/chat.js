@@ -20,7 +20,7 @@ const Chat = () => {
 
 
   const teachersData = () => {
-      axios.get("http://localhost:9000/api/teachers/all").then
+      axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/all`).then
       ((res) => {
             console.log("abc" , res);
             const verifiedTeachers = res?.data?.filter((item) => item.verified === true);
@@ -40,7 +40,7 @@ const Chat = () => {
 
   const teacherChat = (id) => {
     setLoading(true);
-    axios.get(`http://localhost:9000/api/teachers/getstudentmessages/${ teachertoken ? id : authUser}/${ teachertoken ? authUser : id}`).then
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/getstudentmessages/${ teachertoken ? id : authUser}/${ teachertoken ? authUser : id}`).then
     ((res) => {
           console.log("debugger" , res?.data);
           setTeachersChat(res?.data)
@@ -56,7 +56,7 @@ const Chat = () => {
 
 const studentChat = (id) => {
   setLoading(true);
-  axios.get(`http://localhost:9000/api/students/getteachermessages/${ teachertoken ? id : authUser}/${ teachertoken ? authUser : id}`).then
+  axios.get(`${process.env.REACT_APP_BASE_URL}/api/students/getteachermessages/${ teachertoken ? id : authUser}/${ teachertoken ? authUser : id}`).then
   ((res) => {
         console.log("debugger2" , res)
         setStudentsChat(res?.data)
@@ -79,7 +79,7 @@ const [specificteacherstudents , setSpecificTeacherStudents] = useState([]);
 
 
 const specificTeacherStudents = () => {
-  axios.get(`http://localhost:9000/api/teachers/getstudents/${authUser}`).then
+  axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/getstudents/${authUser}`).then
   ((res) => {
         console.log("dsdsdfds" , res)
         setSpecificTeacherStudents(res?.data)      
@@ -103,7 +103,7 @@ const sendMessageToStudent = () => {
   const data = {
     message: messageData
   }
-  axios.post(`http://localhost:9000/api/students/messages/${studentId}/${authUser}` , data).then
+  axios.post(`${process.env.REACT_APP_BASE_URL}/api/students/messages/${studentId}/${authUser}` , data).then
   ((res) => {
         console.log("dsdsdfds" , res);
        
@@ -127,7 +127,7 @@ const [allMessages , setAllMessages] = useState([]);
 
 // const studentsWithMessages = await User.find({ _id: { $in: studentIdsWithMessages } });
 const AllMessagesApi = () => {
-  axios.get("http://localhost:9000/api/messages").then
+  axios.get(`${process.env.REACT_APP_BASE_URL}/api/messages`).then
   ((res) => {
     console.log("resmessage" , res )
     setAllMessages(res?.data);
@@ -182,7 +182,7 @@ const sendMessageToTeacher = () => {
   const data = {
     message: messageData
   }
-  axios.post(`http://localhost:9000/api/teachers/messages/${authUser}/${teacherId}` , data).then
+  axios.post(`${process.env.REACT_APP_BASE_URL}/api/teachers/messages/${authUser}/${teacherId}` , data).then
   ((res) => {
         console.log("dsdsdfds" , res);  
         const newMessage = res.data; // Adjust accordingly based on your API response structure  

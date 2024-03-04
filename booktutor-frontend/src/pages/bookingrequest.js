@@ -8,7 +8,7 @@ const BookingRequest = () => {
     const [data , setData] = useState([])
 
     const studentBookingRequests = () => {
-        axios.get(`http://localhost:9000/api/bookings/teacher/${teacherId}/studentsbookings`).then
+        axios.get(`${process.env.REACT_APP_BASE_URL}/api/bookings/teacher/${teacherId}/studentsbookings`).then
         ((res) => {
             console.log("res" , res);
             setData(res?.data)
@@ -18,7 +18,7 @@ const BookingRequest = () => {
     }
 
     const acceptBooking = (id) => {
-        axios.post(`http://localhost:9000/api/bookings/teacher/${teacherId}/acceptBooking/${id}`).then
+        axios.post(`${process.env.REACT_APP_BASE_URL}/api/bookings/teacher/${teacherId}/acceptBooking/${id}`).then
         ((res) => {
             console.log(res);
             studentBookingRequests();

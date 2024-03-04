@@ -28,7 +28,7 @@ const Header = () => {
     const studenttoken = localStorage.getItem("studenttoken");
 
     const studentLogout = () => {
-      axios.post("http://localhost:9000/api/students/logout" , user).then
+      axios.post(`${process.env.REACT_APP_BASE_URL}/api/students/logout` , user).then
       ((res) => {
               toast.success("Logout Succesfully");
       }).catch((err) => {
@@ -36,7 +36,7 @@ const Header = () => {
       })
     }
     const teacherLogout = () => {
-      axios.post("http://localhost:9000/api/teachers/logout" , user).then
+      axios.post(`${process.env.REACT_APP_BASE_URL}/api/teachers/logout` , user).then
       ((res) => {
               toast.success("Logout Succesfully");
       }).catch((err) => {
@@ -45,7 +45,7 @@ const Header = () => {
     }
     const logout = () => {
 
-      axios.post("http://localhost:9000/api/students/logout" , user).then
+      axios.post(`${process.env.REACT_APP_BASE_URL}/api/students/logout` , user).then
       ((res) => {
               toast.success("Logout Succesfully");
       }).catch((err) => {
@@ -61,7 +61,7 @@ const Header = () => {
 
     const getAllNotifications = async () => {
       console.log("iii" , user._id)
-     await axios.get(`http://localhost:9000/api/students/getNotifications/${user._id}`).then
+     await axios.get(`${process.env.REACT_APP_BASE_URL}/api/students/getNotifications/${user._id}`).then
       ((res) => {
         console.log("yyy" , res)
         setNotifications(res?.data)

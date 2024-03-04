@@ -27,7 +27,7 @@ const Login = () => {
 
 
     const loginStudent = () => {
-        axios.post("http://localhost:9000/api/students/login" , formValues).then
+        axios.post(`${process.env.REACT_APP_BASE_URL}/api/students/login` , formValues).then
         ((res) => {
                 console.log("res" , res);
                 toast.success("Login Succesfully");
@@ -44,7 +44,7 @@ const Login = () => {
     }
 
     const loginTeacher = () => {
-        axios.post("http://localhost:9000/api/teachers/login" , formValues).then
+        axios.post(`${process.env.REACT_APP_BASE_URL}/api/teachers/login` , formValues).then
         ((res) => {
                 console.log("res" , res);
                 toast.success("Login Successfully");

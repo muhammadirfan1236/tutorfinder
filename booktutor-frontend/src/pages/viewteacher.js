@@ -6,7 +6,7 @@ const ViewTeacher = () => {
     const { id } = useParams();
     const [teacher , setTeacher] = useState();
     const teacherData = () => {
-        axios.get(`http://localhost:9000/api/teachers/get/${id}`).then
+        axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/get/${id}`).then
         ((res) => {
               console.log("abc" , res)
             setTeacher(res?.data)
