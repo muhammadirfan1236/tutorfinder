@@ -1,0 +1,34 @@
+.main-header{
+    /* position: fixed !important; */
+    /* top: 10px;
+    z-index: 999;
+    width: 100%; */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #41916e;
+}
+.main-header .nav-item .nav-link{
+    color: #fff;
+    font-size: 20px;
+}
+
+.main-header .logo{
+   color: #fff;
+   text-decoration: none;
+   font-size: 30px;
+}
+
+.main-header .notification-div{
+    position: absolute;
+    top: 50px;
+    width: 300px;
+    border-radius: 8px;
+    background-color: #fff;
+    height: 390px;
+    overflow: auto;
+}
+
+.main-header .notification-div::-webkit-scrollbar {
+   display: none; /* Set the width of the WebKit scrollbar */
+  }
