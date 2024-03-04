@@ -221,7 +221,36 @@ const SignUp = () => {
                                                <label htmlFor="" className='fs-4'>Subject <span style={{ color: "red" }}>*</span> </label>
                                                <div className='input-div'>
                                                    <CiLock className='fs-4' />
-                                                   <input name='subject' className='fs-4' onChange={handleChange} type="text" placeholder='Enter Subject' />
+                                                   <select name="subject" className='fs-4' onChange={handleChange} id="" style={{ background: "#000" }}>
+                                                       <option value="">Select Subject</option>
+                                                       <option value="English">English</option>
+                                                       <option value="Mathematics">Mathematics</option>
+                                                       <option value="Science">Science</option>
+                                                       <option value="Social Studies">Social Studies</option>
+                                                       <option value="History">History</option>
+                                                       <option value="Geography">Geography</option>
+                                                       <option value="Physics">Physics</option>
+                                                       <option value="Chemistry">Chemistry</option>
+                                                       <option value="Biology">Biology</option>
+                                                       <option value="Environmental Science">Environmental Science</option>
+                                                       <option value="Physical Education">Physical Education</option>
+                                                       <option value="Health Education">Health Education</option>
+                                                       <option value="Foreign Languages (e.g., Spanish, French, German)">Foreign Languages (e.g., Spanish, French, German)</option>
+                                                       <option value="Computer Science">Computer Science</option>
+                                                       <option value="Information Technology">Information Technology</option>
+                                                       <option value="Arts (e.g., Visual Arts, Performing Arts)">Arts (e.g., Visual Arts, Performing Arts)</option>
+                                                       <option value="Music">Music</option>
+                                                       <option value="Economics">Economics</option>
+                                                       <option value="Business Studies">Business Studies</option>
+                                                       <option value="Home Economics">Home Economics</option>
+                                                       <option value="Philosophy">Philosophy</option>
+                                                       <option value="Psychology">Psychology</option>
+                                                       <option value="Sociology">Sociology</option>
+                                                       <option value="Government">Government</option>
+                                                       <option value="Religious Studies">Religious Studies</option>
+                                                       <option value="Technical Education">Technical Education</option>
+
+                                                   </select>
                                                </div>
                                            </div>
                                            <div className="d-flex flex-column gap-1 text-white mt-3">
@@ -261,33 +290,18 @@ const SignUp = () => {
                                                    {/* <input name='education' onChange={handleChange} type="text" placeholder='Enter Subject' /> */}
                                                    <select name="education" className='fs-4' onChange={handleChange} id="" style={{ background: "#000" }}>
                                                        <option value="">Select Education</option>
-                                                       <option value="English">English</option>
-                                                       <option value="Mathematics">Mathematics</option>
-                                                       <option value="Science">Science</option>
-                                                       <option value="Social Studies">Social Studies</option>
-                                                       <option value="History">History</option>
-                                                       <option value="Geography">Geography</option>
-                                                       <option value="Physics">Physics</option>
-                                                       <option value="Chemistry">Chemistry</option>
-                                                       <option value="Biology">Biology</option>
-                                                       <option value="Environmental Science">Environmental Science</option>
-                                                       <option value="Physical Education">Physical Education</option>
-                                                       <option value="Health Education">Health Education</option>
-                                                       <option value="Foreign Languages (e.g., Spanish, French, German)">Foreign Languages (e.g., Spanish, French, German)</option>
-                                                       <option value="Computer Science">Computer Science</option>
-                                                       <option value="Information Technology">Information Technology</option>
-                                                       <option value="Arts (e.g., Visual Arts, Performing Arts)">Arts (e.g., Visual Arts, Performing Arts)</option>
-                                                       <option value="Music">Music</option>
-                                                       <option value="Economics">Economics</option>
-                                                       <option value="Business Studies">Business Studies</option>
-                                                       <option value="Home Economics">Home Economics</option>
-                                                       <option value="Philosophy">Philosophy</option>
-                                                       <option value="Psychology">Psychology</option>
-                                                       <option value="Sociology">Sociology</option>
-                                                       <option value="Government">Government</option>
-                                                       <option value="Religious Studies">Religious Studies</option>
-                                                       <option value="Technical Education">Technical Education</option>
-
+                                                       <option value="B.A">B.A</option>
+                                                       <option value="BM">BM</option>
+                                                       <option value="BFA">BFA</option>
+                                                       <option value="BSc">BSc</option>
+                                                       <option value="MA">MA</option>
+                                                       <option value="MBA">MBA</option>
+                                                       <option value="JD">JD</option>
+                                                       <option value="MD">MD</option>
+                                                       <option value="PhD">PhD</option>
+                                                       <option value="LLB">LLB</option>
+                                                       <option value="LLM">LLM</option>
+                                                       <option value="Other">Other</option>
                                                    </select>
                                                </div>
                                            </div>

@@ -46,8 +46,8 @@ const LandingPage = () => {
     </div>
   </nav>
   <div class="jumbotron text-center d-flex flex-column gap-2 " style={{background:"#f4511e" , padding:"30px" , color:"#fff"}}>
-  <h1>Company</h1> 
-  <p>We specialize in blablabla</p> 
+  <h1>TutorFinder</h1> 
+  <p>We specialize in blablabla We specialize in online teaching </p> 
   <form class="form-inline" style={{display:"flex" , justifyContent:"center"}}>
     <div class="input-group" style={{width:"50%"}}>
       <input type="email" class="form-control" size="50" placeholder="Email Address" required=""/>
@@ -61,9 +61,18 @@ const LandingPage = () => {
 <div id="about" class="container p-4">
   <div class="row">
     <div class="col-sm-8">
-      <h2>About Company Page</h2><br/>
+      <h2>About Website</h2><br/>
       <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br/>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+ labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in 
+culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod 
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+ullamco laboris nisi ut aliquip ex ea commodo consequat. Discover skilled tutors tailored to your needs, 
+with transparent profiles and user reviews for informed decisions. Enjoy flexible scheduling and online sessions
+ for convenient, global learning. Our user-friendly interface ensures a seamless experience, prioritizing safety 
+and security. Empower your academic success with TutorFinder.
+</p>
       <br/><button class="btn btn-default btn-lg">Get in Touch</button>
     </div>
     <div class="col-sm-4 text-center">
@@ -79,9 +88,17 @@ const LandingPage = () => {
     </div>
     <div class="col-sm-8">
       <h2>Our Values</h2><br/>
-      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br/>
-      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+ex ea commodo consequat.</h4><br/>
+      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+ ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+ ex ea commodo consequat. At TutorFinder, our mission is to empower learners by facilitating
+ meaningful connections between students and expert tutors. We strive to create a dynamic learning ecosystem that 
+transcends geographical boundaries, fostering global collaboration. Our commitment is to provide accessible,
+ personalized education, enabling every student to achieve their academic goals with confidence.</p>
     </div>
   </div>
 </div>
