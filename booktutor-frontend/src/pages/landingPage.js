@@ -1,11 +1,7 @@
 import React from 'react'
-import { CiPower } from "react-icons/ci";
-import { FaHeart } from "react-icons/fa";
-import { IoBagHandleSharp } from "react-icons/io5";
-import { LuLeafyGreen } from "react-icons/lu";
-import { FaCertificate } from "react-icons/fa6";
-import { MdOutlinePlumbing } from "react-icons/md";
-
+import ImageOne from "../statics/images/imageone.jpg"
+import ImageTwo from "../statics/images/imagetwo.jpg"
+import ImageThree from "../statics/images/imagethree.jpg"
 
 
 const LandingPage = () => {
@@ -152,21 +148,21 @@ transcends geographical boundaries, fostering global collaboration. Our commitme
   <div class="row text-center slideanim slide">
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="https://cdn.pixabay.com/photo/2024/02/29/08/17/manor-8603632_640.jpg" alt="Paris" width="400" height="300"/>
+        <img src={ImageOne} alt="Paris" style={{width:"500px" , height:"300px"}}/>
         <p><strong>Paris</strong></p>
         <p>Yes, we built Paris</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="https://cdn.pixabay.com/photo/2018/12/14/21/29/sunset-3875817_640.jpg" alt="New York" width="400" height="300"/>
+        <img src={ImageTwo} alt="New York" style={{width:"500px" , height:"300px"}}/>
         <p><strong>New York</strong></p>
         <p>We built New York</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="https://cdn.pixabay.com/photo/2015/07/11/22/57/city-841408_640.jpg" alt="San Francisco" width="400" height="300"/>
+        <img src={ImageThree} alt="San Francisco" style={{width:"500px" , height:"300px"}}/>
         <p><strong>San Francisco</strong></p>
         <p>Yes, San Fran is ours</p>
       </div>
