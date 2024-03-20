@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import "../statics/css/dashboard.css"
 
 const Chat = () => {
 
@@ -15,13 +16,14 @@ const Chat = () => {
   const studenttoken = localStorage.getItem("studenttoken");
   const teachertoken = localStorage.getItem("teachertoken");
   const dataUser = JSON.parse(localStorage.getItem("user" || null))
+  const [subject , setSubject] = useState('')
   
 
   console.log("umaramjad" ,  dataUser?._id)
 
 
   const teachersData = () => {
-      axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/all`).then
+      axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/all?subject=${subject}`).then
       ((res) => {
             console.log("abc" , res);
             // const verifiedTeachers = res?.data?.filter((item) => item.verified === true);
@@ -225,12 +227,51 @@ return formattedDate;
 }
 
 console.log("studenttoken" , studenttoken , teachers)
+const handleSubmit = (e) => {
+  e.preventDefault();
+  teachersData();
+}
 
   return (
     <div className='container-fluid p-0' >
       <div className="row p-1" >
         <div className="col-lg-3 col-sm-12 shadow" style={{ background:"#FFF", height:"90vh", overflow:"auto" , padding:"10px" }}>
-          { studenttoken && teachers.map((item , index) => (
+          { studenttoken &&
+          <>
+          <form action="#" onSubmit={handleSubmit}>
+				<div class="form-input d-flex justify-content-between py-4 px-2 gap-3 align-items-center">
+					{/* <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="Search subject "/> */}
+					<div class="select-box">
+              <select name='subject' value={subject} onChange={(e) => setSubject(e.target.value)} className='fs-5 bg-light p-3'>
+                <option hidden>Select Subject </option>
+                <option value={""}>All</option>
+                <option>English</option>
+                <option>Mathematics</option>
+                <option>Science</option>
+                <option>Social Studies</option>
+                <option>History</option>
+                <option>Geography</option>
+                <option>Physics</option>
+                <option>Chemistry</option>
+                <option>Biology</option>
+                 <option>Environmental Science</option> 
+                 <option>Physical Education</option> 
+                 <option>Health Education</option>
+
+                <option>Foreign Languages (e.g., Spanish, French, German )</option>
+                <option>Computer Science - Information Technology</option>
+                <option>Business Studies</option>
+                <option>Home Economics</option>
+                <option>Philosophy</option> 
+                <option>Psychology</option> 
+                <option>Sociology</option>
+
+              </select>
+            </div>
+					<button type="submit"  style={{border:"none" , borderRadius:"30px"}}><i class='bx bx-search' style={{padding:"5px" , borderRadius:"30px", fontSize:"14px" , border:"none" , background:"skyblue"}}></i></button>
+				</div>
+			</form>
+     { teachers.map((item , index) => (
             <div key={index} className='d-flex mt-2' style={{cursor:"pointer" , borderBottom:"1px solid #e1d8d8" , fontSize:"13px", paddingBottom:"10px" }} onClick={() => {
               teacherChat(item._id);
               studentChat(item?._id);
@@ -253,6 +294,8 @@ console.log("studenttoken" , studenttoken , teachers)
                     </div>
             </div>
           ))}
+          </>
+         }
           { teachertoken && specificteacherstudents.map((item , index) => (
             <div key={index} className='d-flex mt-2' style={{cursor:"pointer" , background:"#fff" , borderRadius:"8px" }} onClick={() => {
               teacherChat(item._id);
