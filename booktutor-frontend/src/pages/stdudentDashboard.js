@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import "../statics/css/dashboard.css"
 import axios from 'axios';
 import Chat from './chat';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 const StudentDashboard = () => {
 
 	const [teachers , setTeachers] = useState([]);
+	const history = useHistory();
 	const [subject , setSubject] = useState('');
 	const token = localStorage.getItem("token" || null);
 	const [tab , setTab] = useState("dashboard");
@@ -32,6 +34,14 @@ const StudentDashboard = () => {
 		teachersData();
 	}
 
+
+	const logout = () => {
+		localStorage.removeItem("studenttoken");
+		localStorage.removeItem("user");
+		setTimeout(() => {
+			history.push("/login")
+		}, 1000);
+	}
     
 
     console.log("TEACHERS DATA" , teachers)
@@ -144,7 +154,7 @@ const StudentDashboard = () => {
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="#" onClick={logout}>
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
