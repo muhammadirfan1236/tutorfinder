@@ -14,17 +14,18 @@ const Chat = () => {
   const authUser = localStorage.getItem("authuser");
   const studenttoken = localStorage.getItem("studenttoken");
   const teachertoken = localStorage.getItem("teachertoken");
+  const dataUser = JSON.parse(localStorage.getItem("user" || null))
   
 
-  console.log("umaramjad" ,  authUser)
+  console.log("umaramjad" ,  dataUser?._id)
 
 
   const teachersData = () => {
       axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/all`).then
       ((res) => {
             console.log("abc" , res);
-            const verifiedTeachers = res?.data?.filter((item) => item.verified === true);
-          setTeachers(verifiedTeachers)
+            // const verifiedTeachers = res?.data?.filter((item) => item.verified === true);
+          setTeachers(res?.data)
               
       }).catch((err) => {
           console.log(err)
@@ -40,7 +41,8 @@ const Chat = () => {
 
   const teacherChat = (id) => {
     setLoading(true);
-    axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/getstudentmessages/${ teachertoken ? id : authUser}/${ teachertoken ? authUser : id}`).then
+    // axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/getstudentmessages/${ teachertoken ? id : authUser}/${ teachertoken ? authUser : id}`).then
+    axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/getstudentmessages/${ teachertoken ? id : dataUser?._id}/${ teachertoken ? authUser : id}`).then
     ((res) => {
           console.log("debugger" , res?.data);
           setTeachersChat(res?.data)
@@ -56,7 +58,8 @@ const Chat = () => {
 
 const studentChat = (id) => {
   setLoading(true);
-  axios.get(`${process.env.REACT_APP_BASE_URL}/api/students/getteachermessages/${ teachertoken ? id : authUser}/${ teachertoken ? authUser : id}`).then
+  // axios.get(`${process.env.REACT_APP_BASE_URL}/api/students/getteachermessages/${ teachertoken ? id : authUser}/${ teachertoken ? authUser : id}`).then
+  axios.get(`${process.env.REACT_APP_BASE_URL}/api/students/getteachermessages/${ teachertoken ? id : dataUser?._id}/${ teachertoken ? authUser : id}`).then
   ((res) => {
         console.log("debugger2" , res)
         setStudentsChat(res?.data)
@@ -115,10 +118,7 @@ const sendMessageToStudent = () => {
   })
 }
 
-const sendMessage = () => {
-  if (teachertoken) sendMessageToStudent();
-  else sendMessageToTeacher();
-}
+
 
 
 const [allMessages , setAllMessages] = useState([]);
@@ -182,7 +182,7 @@ const sendMessageToTeacher = () => {
   const data = {
     message: messageData
   }
-  axios.post(`${process.env.REACT_APP_BASE_URL}/api/teachers/messages/${authUser}/${teacherId}` , data).then
+  axios.post(`${process.env.REACT_APP_BASE_URL}/api/teachers/messages/${dataUser?._id}/${teacherId}` , data).then
   ((res) => {
         console.log("dsdsdfds" , res);  
         const newMessage = res.data; // Adjust accordingly based on your API response structure  
@@ -194,6 +194,11 @@ const sendMessageToTeacher = () => {
   }).catch((err) => {
       console.log(err)
   })
+}
+
+const sendMessage = () => {
+  if (teachertoken) sendMessageToStudent();
+  else sendMessageToTeacher();
 }
 
 
@@ -219,14 +224,14 @@ const formattedDate = date.toLocaleDateString('en-US', options);
 return formattedDate;
 }
 
-
+console.log("studenttoken" , studenttoken , teachers)
 
   return (
-    <div className='container-fluid' >
-      <div className="row p-1" style={{minHeight:"100vh"}}>
-        <div className="col-lg-3 col-sm-12 shadow" style={{ background:"#FFF", height:"100vh", overflow:"auto" , border:"1px solid #e3dbdb"}}>
+    <div className='container-fluid p-0' >
+      <div className="row p-1" >
+        <div className="col-lg-3 col-sm-12 shadow" style={{ background:"#FFF", height:"90vh", overflow:"auto" , padding:"10px" }}>
           { studenttoken && teachers.map((item , index) => (
-            <div key={index} className='d-flex mt-2' style={{cursor:"pointer" , borderBottom:"1px solid #e1d8d8" , paddingBottom:"10px" }} onClick={() => {
+            <div key={index} className='d-flex mt-2' style={{cursor:"pointer" , borderBottom:"1px solid #e1d8d8" , fontSize:"13px", paddingBottom:"10px" }} onClick={() => {
               teacherChat(item._id);
               studentChat(item?._id);
               setTeacherId(item._id)
@@ -249,7 +254,7 @@ return formattedDate;
             </div>
           ))}
           { teachertoken && specificteacherstudents.map((item , index) => (
-            <div key={index} className='d-flex mt-2' style={{cursor:"pointer" , background:"#fff" , borderRadius:"8px" , border:"1px solid lightgray"}} onClick={() => {
+            <div key={index} className='d-flex mt-2' style={{cursor:"pointer" , background:"#fff" , borderRadius:"8px" }} onClick={() => {
               teacherChat(item._id);
               studentChat(item?._id);
               setStudentId(item._id)
@@ -272,8 +277,8 @@ return formattedDate;
             </div>
           ))}
         </div>
-        <div className="col-lg-9 col-sm-12" style={{position:"relative" , background:"rgb(253 249 249)"}}>
-          <div className="chatting p-2" style={{background:"rgb(253 249 249)" , height:"90vh" , overflow:"auto" }}>
+        <div className="col-lg-9 col-sm-12" style={{position:"relative"   }}>
+          <div className="chatting p-2" style={{ height:"85vh" , overflow:"auto" }}>
           {loading && <p>Loading...</p>}
             {mainChat.length > 0 ?  
             sortedMessages.map((item,index) => (

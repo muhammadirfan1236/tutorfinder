@@ -192,7 +192,20 @@ router.post('/login', async (req, res) => {
 router.get('/all', async (req, res) => {
     try {
         
-      const teachers = await Teacher.find();
+
+      let query = {}; // Default empty query object
+
+      // Check if the 'subject' query parameter is present
+      // if (req.query.subject) {
+      //     // If subject query parameter is present, add it to the query object
+      //     query.subject = req.query.subject;
+      // }
+       // Check if the 'subject' query parameter is present
+       if (req.query.subject) {
+        // Use case-insensitive regex to search for subjects containing the provided query string
+        query.subject = { $regex: new RegExp(req.query.subject, 'i') };
+    }
+      const teachers = await Teacher.find(query);
       console.log("object" , teachers)
       res.json(teachers);
     } catch (err) {

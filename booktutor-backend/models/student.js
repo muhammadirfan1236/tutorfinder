@@ -7,6 +7,12 @@ const studentSchema = new mongoose.Schema({
         type: String,
         // required: true
     },
+    firstname: {
+        type: String,
+    },
+    lastname: {
+       type: String, 
+    },
     subject: {
         type: String,
         // required: true
@@ -18,6 +24,9 @@ const studentSchema = new mongoose.Schema({
     gender: {
         type: String,
         // required: true
+    },
+    role: {
+        type: String,
     },
     image: {
         type: String
