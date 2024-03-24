@@ -23,35 +23,53 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post('/create',  upload.single('image') , async (req, res) => {
+// router.post('/create',  upload.single('image') , async (req, res) => {
    
-    try {
-        // const { error } = validate(req.body);
-        // if (error)
-        //     return res.status(400).send({ message: error.details[0].message });
-        const image = req.file ? req.file.filename : null;
-        let teacher = await Teacher.findOne({ email: req.body.email });
-        let student = await User.findOne({ email: req.body.email });
-        if (teacher || student)  return res.status(409).send({ message: 'Email already registered.' });
+//     try {
+//         // const { error } = validate(req.body);
+//         // if (error)
+//         //     return res.status(400).send({ message: error.details[0].message });
+//         const image = req.file ? req.file.filename : null;
+//         let teacher = await Teacher.findOne({ email: req.body.email });
+//         let student = await User.findOne({ email: req.body.email });
+//         if (teacher || student)  return res.status(409).send({ message: 'Email already registered.' });
 
-        const salt = await bcrypt.genSalt(Number(process.env.SALT));
-        const passwordHash = await bcrypt.hash(req.body.password, salt);
-        // userImage: req.file.filename,
-        teacher = await new Teacher({ ...req.body, image: image, password: passwordHash }).save();
+//         const salt = await bcrypt.genSalt(Number(process.env.SALT));
+//         const passwordHash = await bcrypt.hash(req.body.password, salt);
+//         // userImage: req.file.filename,
+//         teacher = await new Teacher({ ...req.body, image: image, password: passwordHash }).save();
 
-        const token = await new Token({
-            userId: teacher._id,
-            token: crypto.randomBytes(32).toString('hex'),
-        }).save();
-        const url = `${process.env.BASE_URL}api/teachers/${teacher._id}/verify/${token.token}`; 
+//         const token = await new Token({
+//             userId: teacher._id,
+//             token: crypto.randomBytes(32).toString('hex'),
+//         }).save();
+//         const url = `${process.env.BASE_URL}api/teachers/${teacher._id}/verify/${token.token}`; 
         
-        await sendEmail(teacher.email, 'Email Verification', url);
-        console.log({message: "Already Send an Email Please Verify."})
+//         await sendEmail(teacher.email, 'Email Verification', url);
+//         console.log({message: "Already Send an Email Please Verify."})
         
-        res.status(200).send({message: "Already Send an Email Please Verify."});
-    } catch (error) {
-        res.status(500).send({ message: "Internal Server Error" });
-    }
+//         res.status(200).send({message: "Already Send an Email Please Verify."});
+//     } catch (error) {
+//         res.status(500).send({ message: "Internal Server Error" });
+//     }
+// });
+
+router.post('/create', upload.single('image'), async (req, res) => {
+   
+  try {
+      const image = req.file ? req.file.filename : null;
+      let user = await User.findOne({ email: req.body.email });
+      let teacher = await Teacher.findOne({ email: req.body.email });
+      if (user || teacher)  return res.status(409).send({ message: 'Email already registered.' });
+
+      const salt = await bcrypt.genSalt(Number(process.env.SALT));
+      const passwordHash = await bcrypt.hash(req.body.password, salt);
+      // userImage: req.file.filename,
+      teacher = await new Teacher({ ...req.body, image: image, password: passwordHash }).save();
+      res.status(200).send({message: "Registered successfully"});
+  } catch (error) {
+      res.status(500).send({ message: "Internal Server Error" });
+  }
 });
 
 
