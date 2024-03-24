@@ -29,9 +29,6 @@ const upload = multer({ storage: storage });
 router.post('/create', upload.single('image'), async (req, res) => {
    
     try {
-        // const { error } = validate(req.body);
-        // if (error)
-        //     return res.status(400).send({ message: error.details[0].message });
         const image = req.file ? req.file.filename : null;
         let user = await User.findOne({ email: req.body.email });
         let teacher = await Teacher.findOne({ email: req.body.email });
@@ -41,18 +38,7 @@ router.post('/create', upload.single('image'), async (req, res) => {
         const passwordHash = await bcrypt.hash(req.body.password, salt);
         // userImage: req.file.filename,
         user = await new User({ ...req.body, image: image, password: passwordHash }).save();
-
-        // const token = await new Token({
-        //     userId: user._id,
-        //     token: crypto.randomBytes(32).toString('hex'),
-        // }).save();
-        // const url = `${process.env.BASE_URL}api/students/${user._id}/verify/${token.token}`; 
-        
-        // await sendEmail(user.email, 'Email Verification', url);
-        // console.log({message: "Already Send an Email Please Verify."})
         res.status(200).send({message: "Registered successfully"});
-        // res.status(200).send({message: "Already Send an Email Please Verify."});
-        // res.status(200).send({user: user , message: "Success"})
     } catch (error) {
         res.status(500).send({ message: "Internal Server Error" });
     }

@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cors = require('cors');
+const crypto = require('crypto');
+
 const studentRoutes = require('./routers/student');
 const teacherRoutes = require('./routers/teacher');
 const messageRoutes = require('./routers/messages');
@@ -13,6 +15,9 @@ const http = require("http");
 const socketIo = require('./socket'); 
 // const { Server } = require("socket.io")
  // Load environment variables
+
+ const secretKey = crypto.randomBytes(32).toString('hex');
+console.log(secretKey , "secretKey");
 
 const app = express();
 app.use(cors());
@@ -54,6 +59,7 @@ mongoose.connect(mongoURI, {
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
   console.log('Connected to MongoDB');
+  console.log(secretKey , "secretKey");
 });
 
 
