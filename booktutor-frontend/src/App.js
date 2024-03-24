@@ -12,6 +12,7 @@ import BookingRequest from './pages/bookingrequest';
 import Aboutus from './pages/aboutus';
 import LandingPage from './pages/landingPage';
 import StudentDashboard from './pages/stdudentDashboard';
+import TeacherDashboard from './pages/teacherDashboard';
 
 const socket = io.connect("http://localhost:9000")
 
@@ -30,6 +31,7 @@ function App() {
      <Route exact path="/bookingrequest" component={BookingRequest} />
      <Route exact path="/aboutus" component={Aboutus} />
      <Route exact path="/studentDashboard" component={StudentDashboard} />
+     <Route exact path="/teacherDashboard" component={TeacherDashboard} />
      </Router>
    </>
   );

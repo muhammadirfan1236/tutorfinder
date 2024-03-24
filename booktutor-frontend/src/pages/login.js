@@ -201,6 +201,7 @@ const Login = () => {
                 localStorage.setItem("user" , JSON.stringify(res?.data?.userData));
                 if(res?.data?.userData?.role === "1") {
                   localStorage.setItem("studenttoken" , res?.data?.tokens?.access_token);
+                  localStorage.setItem("authuser" , res?.data?.userData?._id);
                   setTimeout(() => {
                     history.push("/studentDashboard" , { myData: res?.data?.userData }) 
                 }, 2000);
@@ -208,6 +209,7 @@ const Login = () => {
                 }
                 else {
                   localStorage.setItem("teachertoken" , res?.data?.tokens?.access_token);
+                  localStorage.setItem("authuser" , res?.data?.userData?._id);
                   setTimeout(() => {
                     history.push("/teacherDashboard" , { myData: res?.data?.userData }) 
                 }, 2000);

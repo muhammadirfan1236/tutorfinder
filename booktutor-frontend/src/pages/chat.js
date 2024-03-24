@@ -282,7 +282,7 @@ const handleSubmit = (e) => {
                             <h3 className='mb-0' style={{fontSize:"40px" , color:"rgb(193 174 174)" }}>T</h3>
                         </div>
                     </div>
-                    <div className="p-2 w-100" style={{position:"relative"}}>
+                    <div className=" w-100" style={{position:"relative"}}>
                      <div className="d-flex flex-column gap-1">
                      <div className="d-flex justify-content-between">
                       <h5 className='mb-0' style={{color:"rgb(145 145 145)"}}>{item.name}</h5>
