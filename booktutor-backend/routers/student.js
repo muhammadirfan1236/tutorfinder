@@ -8,40 +8,81 @@ const multer = require('multer');
 const jwt = require('jsonwebtoken');
 const path = require("path");
 const sendEmail = require('../utils/sendEmail');
+const cloudinary = require('cloudinary').v2;
 const crypto = require('crypto');
 const { getIO } = require('../socket');
 
 
 
-// Multer setup for file uploads
+          
+cloudinary.config({ 
+  cloud_name: 'dcoyi5hkd', 
+  api_key: '844174441924624', 
+  api_secret: 'e60NVXxOapXBkzFw0RfFubYyE_M' 
+});
+
+// // Multer setup for file uploads
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'uploads/');
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+//   }
+// });
+
+// const upload = multer({ storage: storage });
+
+// Multer configuration for handling file uploads
+
+
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  filename: function (req,file,cb) {
+    cb(null, file.originalname)
   }
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({storage: storage});
 
 
 router.post('/create', upload.single('image'), async (req, res) => {
-   
-    try {
-        const image = req.file ? req.file.filename : null;
-        let user = await User.findOne({ email: req.body.email });
-        let teacher = await Teacher.findOne({ email: req.body.email });
-        if (user || teacher)  return res.status(409).send({ message: 'Email already registered.' });
+  try {
+    // Upload image to Cloudinary
+    cloudinary.uploader.upload(req.file.path, async (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({
+          success: false,
+          message: "Error"
+        });
+      }
 
-        const salt = await bcrypt.genSalt(Number(process.env.SALT));
-        const passwordHash = await bcrypt.hash(req.body.password, salt);
-        // userImage: req.file.filename,
-        user = await new User({ ...req.body, image: image, password: passwordHash }).save();
-        res.status(200).send({message: "Registered successfully"});
-    } catch (error) {
-        res.status(500).send({ message: "Internal Server Error" });
-    }
+      const imageUrl = result.secure_url; // URL of the uploaded image
+
+      // Proceed with database logic after uploading the image
+      let user = await User.findOne({ email: req.body.email });
+      let teacher = await Teacher.findOne({ email: req.body.email });
+
+      if (user || teacher) {
+        return res.status(409).json({ message: 'Email already registered.' });
+      }
+
+      const salt = await bcrypt.genSalt(Number(process.env.SALT));
+      const passwordHash = await bcrypt.hash(req.body.password, salt);
+
+      // Create a new user with the uploaded image URL
+      user = await new User({ ...req.body, image: imageUrl, password: passwordHash }).save();
+
+      res.status(200).json({
+        success: true,
+        message: "Registered successfully",
+        user: user
+      });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 });
 
 router.get('/:id/verify/:token', async (req, res) => {

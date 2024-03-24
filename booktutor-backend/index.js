@@ -65,7 +65,7 @@ db.once('open', () => {
 
 // Routes
 app.use('/api/users', userRoutes);
-app.use(express.static('uploads'));
+// app.use(express.static('uploads'));
 app.use('/api/students', studentRoutes);
 app.use('/api/teachers', teacherRoutes);
 app.use('/api/messages', messageRoutes);
