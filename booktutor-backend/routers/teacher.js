@@ -5,6 +5,7 @@ const  Message  = require('../models/message');
 const bcrypt = require('bcrypt');
 const Token = require('../models/token');
 const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
 const jwt = require('jsonwebtoken');
 const path = require("path");
 const sendEmail = require('../utils/sendEmail');
@@ -12,16 +13,8 @@ const crypto = require('crypto');
 const { getIO } = require('../socket');
 
 // Multer setup for file uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-  }
-});
 
-const upload = multer({ storage: storage });
+
 
 // router.post('/create',  upload.single('image') , async (req, res) => {
    
@@ -54,23 +47,71 @@ const upload = multer({ storage: storage });
 //     }
 // });
 
+const storage = multer.diskStorage({
+  filename: function (req,file,cb) {
+    cb(null, file.originalname)
+  }
+});
 
+const upload = multer({storage: storage});
+
+
+
+// router.post('/create', upload.single('image'), async (req, res) => {
+   
+//   try {
+//       const image = req.file ? req.file.filename : null;
+//       let user = await User.findOne({ email: req.body.email });
+//       let teacher = await Teacher.findOne({ email: req.body.email });
+//       if (user || teacher)  return res.status(409).send({ message: 'Email already registered.' });
+
+//       const salt = await bcrypt.genSalt(Number(process.env.SALT));
+//       const passwordHash = await bcrypt.hash(req.body.password, salt);
+//       // userImage: req.file.filename,
+//       teacher = await new Teacher({ ...req.body, image: image, password: passwordHash }).save();
+//       res.status(200).send({message: "Registered successfully"});
+//   } catch (error) {
+//       res.status(500).send({ message: "Internal Server Error" });
+//   }
+// });
 
 router.post('/create', upload.single('image'), async (req, res) => {
-   
   try {
-      const image = req.file ? req.file.filename : null;
+    // Upload image to Cloudinary
+    cloudinary.uploader.upload(req.file.path, async (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({
+          success: false,
+          message: "Error"
+        });
+      }
+
+      const imageUrl = result.secure_url; // URL of the uploaded image
+
+      // Proceed with database logic after uploading the image
       let user = await User.findOne({ email: req.body.email });
       let teacher = await Teacher.findOne({ email: req.body.email });
-      if (user || teacher)  return res.status(409).send({ message: 'Email already registered.' });
+
+      if (user || teacher) {
+        return res.status(409).json({ message: 'Email already registered.' });
+      }
 
       const salt = await bcrypt.genSalt(Number(process.env.SALT));
       const passwordHash = await bcrypt.hash(req.body.password, salt);
-      // userImage: req.file.filename,
-      teacher = await new Teacher({ ...req.body, image: image, password: passwordHash }).save();
-      res.status(200).send({message: "Registered successfully"});
+
+      // Create a new user with the uploaded image URL
+      teacher = await new Teacher({ ...req.body, image: imageUrl, password: passwordHash }).save();
+
+      res.status(200).json({
+        success: true,
+        message: "Registered successfully",
+        user: teacher
+      });
+    });
   } catch (error) {
-      res.status(500).send({ message: "Internal Server Error" });
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
