@@ -122,6 +122,8 @@ const StudentDashboard = () => {
           switchMode.removeEventListener('change', handleSwitchModeChange);
         };
       }, []);
+
+	  
     
 
 
@@ -214,7 +216,7 @@ const StudentDashboard = () => {
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src={`http://localhost:9000/${user?.image}`}/>
+				<img src={user?.image}/>
 			</a>
 				</>
 			</div>
