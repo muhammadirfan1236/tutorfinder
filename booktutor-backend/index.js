@@ -140,6 +140,6 @@ app.get('/messages/:senderId/:recipientId', async (req, res) => {
 
 // Start the server
 const PORT = process.env.PORT || 9000;
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
