@@ -26,7 +26,7 @@ const server = http.createServer(app);
 
 const io = new Server(server , {
   cors: "https://tutorfinder-mkyz.vercel.app",
-  // socket update url
+  // socket update url a2
   methods: ["GET" , "POST"]
 })
 
