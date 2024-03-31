@@ -557,12 +557,6 @@ useEffect(() => {
   fetchMessages();
   // Listen for incoming messages
   socket.on('message', handleIncomingMessage);
-  // socket.on('message', (data) => {
-  //   console.log('Received message:', data);
-  //   setMessages((prevMessages) => [...prevMessages, data]);
-
-  // });
-
   // Clean up
   return () => {
     console.log('Disconnecting socket...');
