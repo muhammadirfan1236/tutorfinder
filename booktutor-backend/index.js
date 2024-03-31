@@ -25,7 +25,7 @@ app.use(cors());
 const server = http.createServer(app);
 
 const io = new Server(server , {
-  cors: "https://tutorfinder-mkyz.vercel.app/",
+  cors: "http://localhost:3002",
   methods: ["GET" , "POST"]
 })
 
@@ -140,6 +140,6 @@ app.get('/messages/:senderId/:recipientId', async (req, res) => {
 
 // Start the server
 const PORT = process.env.PORT || 9000;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
