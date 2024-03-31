@@ -25,7 +25,7 @@ app.use(cors());
 const server = http.createServer(app);
 
 const io = new Server(server , {
-  cors: "https://tutorfinder-mkyz.vercel.app",
+  cors: "http://localhost:3002",
   methods: ["GET" , "POST"]
 })
 
