@@ -26,6 +26,7 @@ const server = http.createServer(app);
 
 const io = new Server(server , {
   cors: "http://localhost:3002",
+  // socket update url
   methods: ["GET" , "POST"]
 })
 
