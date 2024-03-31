@@ -425,7 +425,7 @@ import React, { useEffect, useState } from 'react'
 import "../statics/css/dashboard.css"
 import io from 'socket.io-client';
 import Message from '../components/message';
-const socket = io.connect(process.env.REACT_APP_BASE_URL)
+const socket = io.connect("https://tutorfinder-tau.vercel.app")
 
 const Chat = () => {
 
