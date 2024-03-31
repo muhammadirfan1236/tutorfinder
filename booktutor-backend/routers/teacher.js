@@ -11,6 +11,7 @@ const path = require("path");
 const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
 const { getIO } = require('../socket');
+const SocketMessages = require('../models/socketmessages');
 
 // Multer setup for file uploads
 
@@ -319,34 +320,16 @@ router.get('/get/:id', async (req, res) => {
   router.get('/getstudents/:teacherId', async (req, res) => {
     try {
       const { teacherId } = req.params;
-  
-      // const students = await User.find({
-      //   'messages.from': teacherId, // Consider messages where the role is 'student'
-      // });
+      console.log("teacherId" , teacherId)
 
-      // console.log("umar" , teacherId , students)
-  
-      // if (!students || students.length === 0) {
-      //   return res.status(404).json({ message: 'No students found for this teacher' });
-      // }
-  
-      // // Extract details of students who sent messages to the teacher
-      // const studentDetails = students.map(student => ({
-      //   studentId: student._id,
-      //   studentName: student.name,
-      //   studentEmail: student.email,
-      //   subject: student.subject,
-      //   teacherId: teacherId
-      //   // Add more fields as needed
-      // }));
-  
-      // res.json({ students: studentDetails });
-      // res.json(studentDetails);
-
-      const allMessages = await Message.find({ teacherId: teacherId });
-      const studentIdsWithMessages = allMessages.map(message => message.studentId);
+      const allMessages = await SocketMessages.find({ recipient: teacherId });
+      console.log("allMessages" , allMessages)
+      const studentIdsWithMessages = allMessages.map(message => message.sender);
+      
       
       const studentsWithMessages = await User.find({ _id: { $in: studentIdsWithMessages } });
+
+      console.log("studentsWithMessages" , studentIdsWithMessages)
       
       res.json(studentsWithMessages);
 
