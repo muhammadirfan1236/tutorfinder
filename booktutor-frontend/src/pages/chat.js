@@ -557,6 +557,12 @@ useEffect(() => {
   fetchMessages();
   // Listen for incoming messages
   socket.on('message', handleIncomingMessage);
+  // socket.on('message', (data) => {
+  //   console.log('Received message:', data);
+  //   setMessages((prevMessages) => [...prevMessages, data]);
+
+  // });
+
   // Clean up
   return () => {
     console.log('Disconnecting socket...');
@@ -621,6 +627,11 @@ const handleSubmit = (e) => {
 useEffect(() => {
   if(teacherId || studentId) fetchMessages()
 },[teacherId , studentId])
+
+ const allUpdateMessages =  messages.sort((a, b) => {
+  return new Date(a.createdAt) - new Date(b.createdAt);
+});
+
 
   return (
     <div className='container-fluid p-0' >
@@ -709,7 +720,7 @@ useEffect(() => {
         </div>
         <div className="col-lg-9 col-sm-12" style={{position:"relative"}}>
           <div className="chatting p-2" style={{ height:"85vh" , overflow:"auto" }}>
-          {messages?.map((message, index) => (
+          {allUpdateMessages?.map((message, index) => (
         <Message key={index} message={message} currentUser={authUser} />
       ))}
       {console.log("studentId" , studentId , teacherId)}
