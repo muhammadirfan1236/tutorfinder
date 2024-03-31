@@ -182,7 +182,7 @@ const TeacherDashboard = () => {
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src={`http://localhost:9000/${user?.image}`}/>
+				<img src={user.image}/>
 			</a>
 				</>
 			</div>
@@ -237,6 +237,121 @@ const TeacherDashboard = () => {
 			 
 		</main>}
 		{ tab === "messages" && <Chat/> }
+
+		{tab === "profile" &&
+					<>
+						<section>
+							<div className="container py-5">
+								<div className="row">
+									<div className="col">
+										<nav aria-label="breadcrumb" className="bg-light rounded-3 p-3 mb-4">
+											<ol className="breadcrumb mb-0">
+												<li className="breadcrumb-item"><a href="#">Home</a></li>
+												<li className="breadcrumb-item"><a href="#">User</a></li>
+												<li className="breadcrumb-item active" aria-current="page">User Profile</li>
+											</ol>
+										</nav>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-4">
+										<div class="card mb-4">
+											<div class="card-body text-center">
+												<img src={user?.image} alt="avatar"
+													class="rounded-circle img-fluid" style={{ width: "150px" , height:"150px" }} />
+												<h5 class="my-3">{user?.name}</h5>
+												{/* <p class="text-muted mb-1">Full Stack Developer</p>
+												<p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+												<div class="d-flex justify-content-center mb-2">
+													<button type="button" class="btn btn-primary">Follow</button>
+													<button type="button" class="btn btn-outline-primary ms-1">Message</button>
+												</div> */}
+											</div>
+										</div>
+										{/* <div class="card mb-4 mb-lg-0">
+											<div class="card-body p-0">
+												<ul class="list-group list-group-flush rounded-3">
+													<li class="list-group-item d-flex justify-content-between align-items-center p-3">
+														<i class="fas fa-globe fa-lg text-warning"></i>
+														<p class="mb-0">https://mdbootstrap.com</p>
+													</li>
+													<li class="list-group-item d-flex justify-content-between align-items-center p-3">
+														<i class="fab fa-github fa-lg" style={{ color: "#333333" }}></i>
+														<p class="mb-0">mdbootstrap</p>
+													</li>
+													<li class="list-group-item d-flex justify-content-between align-items-center p-3">
+														<i class="fab fa-twitter fa-lg" style={{ color: "#55acee" }}></i>
+														<p class="mb-0">@mdbootstrap</p>
+													</li>
+													<li class="list-group-item d-flex justify-content-between align-items-center p-3">
+														<i class="fab fa-instagram fa-lg" style={{ color: "#ac2bac" }}></i>
+														<p class="mb-0">mdbootstrap</p>
+													</li>
+													<li class="list-group-item d-flex justify-content-between align-items-center p-3">
+														<i class="fab fa-facebook-f fa-lg" style={{ color: "#3b5998" }}></i>
+														<p class="mb-0">mdbootstrap</p>
+													</li>
+												</ul>
+											</div>
+										</div> */}
+									</div>
+
+									<div class="col-lg-8">
+										<div class="card mb-4">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Full Name</p>
+													</div>
+													<div class="col-sm-9">
+														<p class="text-muted mb-0">{user?.name}</p>
+													</div>
+												</div>
+												<hr />
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Email</p>
+													</div>
+													<div class="col-sm-9">
+														<p class="text-muted mb-0">{user?.email}</p>
+													</div>
+												</div>
+												<hr />
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Age</p>
+													</div>
+													<div class="col-sm-9">
+														<p class="text-muted mb-0">{user?.age}</p>
+													</div>
+												</div>
+												<hr />
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Gender</p>
+													</div>
+													<div class="col-sm-9">
+														<p class="text-muted mb-0">{user?.gender}</p>
+													</div>
+												</div>
+												{/* <hr />
+												<div class="row">
+													<div class="col-sm-3">
+														<p class="mb-0">Description</p>
+													</div>
+													<div class="col-sm-9">
+														<p class="text-muted mb-0">{user?.description}</p>
+													</div>
+												</div> */}
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</>
+				}
 	</section>
     </div>
   )

@@ -13,6 +13,7 @@ import Aboutus from './pages/aboutus';
 import LandingPage from './pages/landingPage';
 import StudentDashboard from './pages/stdudentDashboard';
 import TeacherDashboard from './pages/teacherDashboard';
+import CheckMessages from './pages/checkMessages';
 
 const socket = io.connect("http://localhost:9000")
 
