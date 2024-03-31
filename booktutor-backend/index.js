@@ -68,7 +68,7 @@ const mongoURI = process.env.MONGO_URI;
 
 
 
-mongoose.connect(mongoURI, {
+mongoose.connect("mongodb+srv://irfangulzar222:admin123@atlascluster.2yte7gb.mongodb.net/", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     dbName: 'booktutor'
