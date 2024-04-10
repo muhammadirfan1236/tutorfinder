@@ -1,4 +1,4 @@
-import { Teacher , Boy } from "../../utils/image"
+import { Teacher, Boy } from "../../utils/image"
 
 export const subjectList = [
     {
@@ -73,17 +73,7 @@ export const tutorListing = [
     {
         name: "Hassan Ahmad",
         image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
-        description : "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
-        subject: "Maths",
-        level: "11 Plus",
-        price: "$37-39/hr",
-        location: "Liverpool",
-        education: "Mathematics with education"
-    }, 
-    {
-        name: "Hassan Ahmad",
-        image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
-        description : "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
+        description: "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
         subject: "Maths",
         level: "11 Plus",
         price: "$37-39/hr",
@@ -93,7 +83,7 @@ export const tutorListing = [
     {
         name: "Hassan Ahmad",
         image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
-        description : "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
+        description: "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
         subject: "Maths",
         level: "11 Plus",
         price: "$37-39/hr",
@@ -103,7 +93,7 @@ export const tutorListing = [
     {
         name: "Hassan Ahmad",
         image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
-        description : "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
+        description: "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
         subject: "Maths",
         level: "11 Plus",
         price: "$37-39/hr",
@@ -113,7 +103,7 @@ export const tutorListing = [
     {
         name: "Hassan Ahmad",
         image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
-        description : "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
+        description: "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
         subject: "Maths",
         level: "11 Plus",
         price: "$37-39/hr",
@@ -123,7 +113,7 @@ export const tutorListing = [
     {
         name: "Hassan Ahmad",
         image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
-        description : "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
+        description: "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
         subject: "Maths",
         level: "11 Plus",
         price: "$37-39/hr",
@@ -133,7 +123,7 @@ export const tutorListing = [
     {
         name: "Hassan Ahmad",
         image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
-        description : "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
+        description: "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
         subject: "Maths",
         level: "11 Plus",
         price: "$37-39/hr",
@@ -143,7 +133,7 @@ export const tutorListing = [
     {
         name: "Hassan Ahmad",
         image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
-        description : "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
+        description: "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
         subject: "Maths",
         level: "11 Plus",
         price: "$37-39/hr",
@@ -153,7 +143,7 @@ export const tutorListing = [
     {
         name: "Hassan Ahmad",
         image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
-        description : "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
+        description: "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
         subject: "Maths",
         level: "11 Plus",
         price: "$37-39/hr",
@@ -163,7 +153,7 @@ export const tutorListing = [
     {
         name: "Hassan Ahmad",
         image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
-        description : "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
+        description: "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
         subject: "Maths",
         level: "11 Plus",
         price: "$37-39/hr",
@@ -173,7 +163,17 @@ export const tutorListing = [
     {
         name: "Hassan Ahmad",
         image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
-        description : "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
+        description: "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
+        subject: "Maths",
+        level: "11 Plus",
+        price: "$37-39/hr",
+        location: "Liverpool",
+        education: "Mathematics with education"
+    },
+    {
+        name: "Hassan Ahmad",
+        image: "https://cdn.pixabay.com/photo/2016/03/29/03/14/portrait-1287413_640.jpg",
+        description: "Hi ! My name is Hassan and I currently work as a Fixed Income Trading Analyst at Bloomberg. I recently graduated from Loughborough University where I studied BSc Mathematics with Economics with a year in Industry working at the Bank of England.",
         subject: "Maths",
         level: "11 Plus",
         price: "$37-39/hr",
