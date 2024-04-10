@@ -63,15 +63,6 @@ const teacherSchema = new mongoose.Schema({
         default: false // Set default status as offline
       },
     verified: {type: Boolean, default: false},
-    // messages: [{ from: { type: mongoose.Schema.Types.ObjectId, ref: 'Student' }, message: String }],
-    messages: [{ from: { type: mongoose.Schema.Types.ObjectId, ref: 'Student' }, role: {type: String} , name: {type: String} , message: {type: String} , timestamp: {type: Date , default: Date.now} }],
-     // Reference to Bookings
-  bookings: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'BookTutor',
-    },
-  ],
 });
 
 teacherSchema.methods.generateAuthToken = function () {
