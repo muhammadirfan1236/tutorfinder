@@ -255,5 +255,23 @@ router.get('/getstudents/:teacherId', async (req, res) => {
   }
 });
 
+// Delete a user by ID
+router.delete('/deleteTeacher/:id', async (req, res) => {
+
+  try {
+    const teacherId = req.params.id;
+    console.log("teacherId" , teacherId)
+    const deletedTeacher = await Teacher.findByIdAndDelete(teacherId);
+    
+    if (!deletedTeacher) {
+      return res.status(404).json({ message: "Teacher not found" });
+    }
+    
+    res.status(200).json({ message: "Teacher deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = router;
 
