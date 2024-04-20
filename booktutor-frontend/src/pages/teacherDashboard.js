@@ -182,7 +182,7 @@ const TeacherDashboard = () => {
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src={user.image}/>
+				<img src={user?.image}/>
 			</a>
 				</>
 			</div>

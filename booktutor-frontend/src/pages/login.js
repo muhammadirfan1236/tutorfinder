@@ -175,10 +175,14 @@ import React, { useState } from 'react'
 import axios from "axios"
 import { ToastContainer , toast } from "react-toastify"
 import  "../statics/css/styles.css"
+import { PulseLoader } from "react-spinners";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 const Login = () => {
  const history = useHistory();
+ const email = "irfan123@gmail.com";
+ const password = "Irfan@123";
+ const [spinnerToggle , setSpinnerToggle] = useState(false)
   const initialValues = {
             email: "",
             password: "",
@@ -191,14 +195,15 @@ const Login = () => {
             setFormValues({...formValues , [name] : value})
         }
 
-      const loginStudent = (e) => {
-        e.preventDefault();
+      const loginStudent = () => {
+        setSpinnerToggle(true)
         axios.post(`${process.env.REACT_APP_BASE_URL}/api/students/login` , formValues).then
         ((res) => {
                 console.log("res" , res);
                 toast.success("Login Succesfully");
                 // localStorage.setItem("token" , res?.data?.tokens?.access_token);
                 localStorage.setItem("user" , JSON.stringify(res?.data?.userData));
+                setSpinnerToggle(false)
                 if(res?.data?.userData?.role === "1") {
                   localStorage.setItem("studenttoken" , res?.data?.tokens?.access_token);
                   localStorage.setItem("authuser" , res?.data?.userData?._id);
@@ -207,18 +212,52 @@ const Login = () => {
                 }, 2000);
                 
                 }
-                else {
+                else  {
                   localStorage.setItem("teachertoken" , res?.data?.tokens?.access_token);
                   localStorage.setItem("authuser" , res?.data?.userData?._id);
                   setTimeout(() => {
                     history.push("/teacherDashboard" , { myData: res?.data?.userData }) 
                 }, 2000);
                 }
+                // else {
+                //   const main = {
+                //     email: email,
+                //     password: password,
+                //   }
+                //   localStorage.setItem("admintoken" , "admintokenvarify");
+                //   // localStorage.setItem("authuser" , main);
+                //   setTimeout(() => {
+                //     history.push("/adminDashboard" , { myData: main }) 
+                // }, 2000);
+                // }
                
         }).catch((err) => {
             console.log(err)
             toast.error(err.response?.data?.message)
-        })
+            
+            
+        }) 
+        // .finally(() => {
+        //   setSpinnerToggle(false)
+        // });
+    }
+
+    const mainLogin = (e) => {
+      e.preventDefault();
+      if(formValues?.email === "irfan123@gmail.com" && formValues?.password === "Irfan@123"){
+        const main = {
+              email: email,
+              password: password,
+            }
+        localStorage.setItem("admintoken" , "admintokenvarify");
+        localStorage.setItem("authuser" , main);
+        setTimeout(() => {
+              history.push("/adminDashboard" , { myData: main }) 
+          }, 2000);
+      }
+      else {
+        loginStudent()
+      }
     }
 
   return (
@@ -227,7 +266,7 @@ const Login = () => {
     <div className="d-flex justify-content-center align-items-center" style={{height:"100vh" , background:"rgb(130, 106, 251)"}}>
    <section class="container-box">
       <header className='fs-1 text-center'>Login</header>
-      <form action="#" class="form" onSubmit={loginStudent}>
+      <form action="#" class="form" onSubmit={mainLogin}>
         <div class="input-box">
           <label className='fs-4 fw-normal'>Email</label>
           <input type="email" name='email' value={formValues?.email} onChange={handleChange} className='fs-4' placeholder="Enter Your Email" required />
@@ -238,7 +277,7 @@ const Login = () => {
           <input type="password" name='password' value={formValues?.password} onChange={handleChange} className='fs-4' placeholder="Enter Password" required />
         </div>
 
-        <button className='fs-4' type='submit'>Login</button>
+        <button className='fs-4' type='submit'>{ spinnerToggle ? <PulseLoader color="#36d7b7" /> : "Login"} </button>
       </form>
       <span class="psw fs-4">Don't Have an account <a href="/signup">Create</a></span>
     </section>
