@@ -7,9 +7,9 @@ const { Server } = require('socket.io');
 const studentRoutes = require('./routers/student');
 const teacherRoutes = require('./routers/teacher');
 const http = require("http");
-const path = require("path")
+// const path = require("path")
 const SocketMessages = require('./models/socketmessages');
-const buildPath = path.join(__dirname , "../booktutor-frontend/build")
+// const buildPath = path.join(__dirname , "../booktutor-frontend/build")
 
 
 const secretKey = crypto.randomBytes(32).toString('hex');
@@ -18,19 +18,19 @@ console.log(secretKey, "secretKey");
 const app = express();
 app.use(cors());
 
-app.use(express.static(buildPath))
+// app.use(express.static(buildPath))
 
 
-app.get("/*" , function(req, res){
-  res.sendFile(
-    path.join(__dirname , "../booktutor-frontend/build/index.html"),
-    function(err){
-      if(err){
-        res.status(500).send(err);
-      }
-    }
-  );
-})
+// app.get("/*" , function(req, res){
+//   res.sendFile(
+//     path.join(__dirname , "../booktutor-frontend/build/index.html"),
+//     function(err){
+//       if(err){
+//         res.status(500).send(err);
+//       }
+//     }
+//   );
+// })
 
 const server = http.createServer(app);
 
