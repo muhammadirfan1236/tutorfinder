@@ -7,6 +7,14 @@
   pointer-events: none;
 }
 
+.card-number-element , .card-input{
+  border-radius: 4px;
+  border: 1px solid var(--grey-2, #cec6c6);
+  background: var(--white, #FFF);
+  padding: 12px 16px;
+  width: 100%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

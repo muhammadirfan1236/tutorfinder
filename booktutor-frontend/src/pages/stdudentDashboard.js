@@ -2,10 +2,16 @@ import React, { useEffect, useState } from 'react'
 import "../statics/css/dashboard.css"
 import axios from 'axios';
 import Chat from './chat';
+import { FaEye } from "react-icons/fa";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import BookingTeacher from '../components/bookingTeacher';
+import StripeForm from './stripeForm';
+
 const StudentDashboard = () => {
 
 	const [teachers, setTeachers] = useState([]);
+	const [singleTeacher , setSingleTeacher] = useState();
+	const [toggle , setToggle] = useState(false);
 	const history = useHistory();
 	const [subject, setSubject] = useState('');
 	const token = localStorage.getItem("token" || null);
@@ -25,6 +31,17 @@ const StudentDashboard = () => {
 			})
 	}
 
+	const singleTeacherData = (teacherId) => {
+		axios.get(`${process.env.REACT_APP_BASE_URL}/api/teachers/get/${teacherId}`).then
+			((res) => {
+				console.log("abc", res)
+				setSingleTeacher(res?.data)
+
+			}).catch((err) => {
+				console.log(err)
+			})
+	}
+
 	useEffect(() => {
 		teachersData()
 	}, [])
@@ -33,6 +50,10 @@ const StudentDashboard = () => {
 		e.preventDefault();
 		teachersData();
 	}
+
+
+
+	console.log("singleTeacherData" , singleTeacher)
 
 
 	const logout = () => {
@@ -131,7 +152,51 @@ const StudentDashboard = () => {
 
 
 	return (
-		<div>
+		<>
+
+
+
+<div class="offcanvas offcanvas-end fs-5" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+  <div className="d-flex justify-content-center p-2 w-100">
+	<img src={singleTeacher?.image} alt="" style={{width:"100px" , height:"100px" , borderRadius:"60px"}} />
+   </div>
+    {/* <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button> */}
+  </div>
+  <div class="offcanvas-body d-flex flex-column gap-2">
+    <div className='d-flex gap-2'>
+     <span className='fw-bold'>Name :  </span> 
+	<p className="mb-0">{singleTeacher?.name}</p> 
+    </div>
+    <div className='d-flex gap-2'>
+     <span className='fw-bold'>Email :  </span> 
+	<p className="mb-0">{singleTeacher?.email}</p> 
+    </div>
+    <div className='d-flex gap-2'>
+     <span className='fw-bold'>Gender :  </span> 
+	<p className="mb-0">{singleTeacher?.gender}</p> 
+    </div>
+    <div className='d-flex gap-2'>
+     <span className='fw-bold'>Description :  </span> 
+	<p className="mb-0">{singleTeacher?.description}</p> 
+    </div>
+    <div className='d-flex gap-2'>
+     <span className='fw-bold'>Price :  </span> 
+	<p className="mb-0">{singleTeacher?.price}</p> 
+    </div>
+    <div className='d-flex gap-2'>
+     <span className='fw-bold'>Subject :  </span> 
+	<p className="mb-0">{singleTeacher?.subject}</p> 
+    </div>
+
+	<div className="d-flex justify-content-center mt-2">
+		<button className='btn btn-primary fs-4' onClick={() => setToggle(!toggle)}>Book Teacher</button>
+	</div>
+  {toggle ? <StripeForm/> : ""}
+  </div>
+</div>
+
+<div>
 			<section id="sidebar">
 				<a href="#" class="brand">
 					<i class='bx bxs-smile'></i>
@@ -139,6 +204,7 @@ const StudentDashboard = () => {
 				</a>
 				<ul class="side-menu top">
 					<li class="active" onClick={() => setTab("dashboard")}>
+						
 						<a href="#">
 							<i class='bx bxs-dashboard' ></i>
 							<span class="text">Dashboard</span>
@@ -284,6 +350,7 @@ const StudentDashboard = () => {
 										<th>Price</th>
 										<th>Education</th>
 										<th>Description</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -299,6 +366,10 @@ const StudentDashboard = () => {
 											<td>{item.price}</td>
 											<td>{item.education}</td>
 											<td>{item.description}</td>
+											<td>
+											<a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+											<FaEye style={{cursor:"pointer"}} onClick={() => singleTeacherData(item._id)}/></a>	
+											</td>
 										</tr>
 									))}
 
@@ -393,6 +464,8 @@ const StudentDashboard = () => {
 				}
 			</section>
 		</div>
+		</>
+		
 	)
 }
 
