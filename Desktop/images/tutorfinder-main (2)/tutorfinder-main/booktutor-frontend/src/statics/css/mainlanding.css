@@ -1,0 +1,139 @@
+.mainlandingbg {
+    background-image: url("../images/hero_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 700px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.mainlandingbg .shadow{
+    position: absolute;
+    /* z-index: 2; */
+    width: 100%;
+    height: 100%;
+    background-color: #272727;
+    opacity: 30%;
+}
+
+.mainlandingbg h1{
+    font-weight: 900;
+    font-size: 50px;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    padding: 25px 0px;
+}
+
+.header .site-logo strong{
+    font-weight: 900;
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    margin-top: 0px !important;
+}
+.header .site-navigation{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.header .site-navigation .site-menu{
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+    font-size: 18px;
+    padding-top: 10px;
+    color: #fff;
+}
+
+.company-section h2 , .meet-team .heading h2{
+    font-size: 30px;
+    font-weight: 700;
+    color: #0779e4;
+}
+
+.company-section p{
+    line-height: 1.7;
+    color: #364d59 !important;
+    font-weight: 300;
+    font-size: 2rem;
+    background: #fff;
+}
+
+.meet-team .post-entry-1{
+  position: relative;
+}
+
+.meet-team .post-entry-1 img{
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+    position: absolute;
+    top: -50px;
+
+}
+
+.meet-team .post-entry-1-contents{
+    background-color: #fff;
+    padding: 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.meet-team .post-entry-1-contents span{
+    color: #ccc;
+    font-weight: 300;
+    font-size: 2rem;
+    background: #fff;
+}
+
+.meet-team .post-entry-1-contents h2{
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #364d59;
+    font-weight: 300;
+}
+
+.meet-team .post-entry-1-contents p{
+    line-height: 1.7;
+    color: #777676 !important;
+    font-weight: 300;
+    font-size: 2rem;
+    background: #fff;
+    margin-bottom: 0;
+}
+
+.mission span{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .2rem;
+}
+
+.mission h2{
+    font-size: 30px;
+    font-weight: 700;
+    color: #0779e4;
+}
+
+.mission p {
+    line-height: 1.7;
+    color: #777676 !important;
+    font-weight: 300;
+    font-size: 1.5rem;
+    background: #fff;
+    margin-bottom: 0;
+}

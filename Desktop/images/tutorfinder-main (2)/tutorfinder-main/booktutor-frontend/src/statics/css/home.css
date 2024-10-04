@@ -1,0 +1,108 @@
+.main-bg{
+    position: relative;
+    /* min-height: 300px; */
+    background-image: url("https://cdn.pixabay.com/photo/2017/07/02/09/03/books-2463779_640.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.main-bg h1{
+    font-size: 50px;
+    color: #fff;
+}
+.main-bg p{
+    font-size: 20px;
+    color: #fff;
+}
+.main-bg button{
+     background-color: transparent;
+     border: 2px solid #f5f5f5;
+     padding: 10px;
+     color: #fff;
+     font-weight: bold;
+     border-radius: 10px;
+     width: 250px !important;
+}
+
+/* .mainsubjects .subjects{
+    background: #f6efef;
+    border-radius: 8px;
+    border: 1px solid #929292;
+    cursor: pointer;
+}
+.mainsubjects .subjects:hover{
+    background-color: rgb(0, 0, 0);
+    scale: 0.9;
+    color: #fff;
+    transition: 0.4s ease-in-out;
+} */
+
+.mainsubjects .subjects {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mainsubjects .subjects .image{
+    padding: 12px;
+    background: rgb(233, 230, 230);
+}
+
+.mainsubjects .subjects .image img {
+    width: 100%;
+    height: 250px;
+}
+.mainsubjects h5{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.tutor-card{
+    border-radius: 4px 4px 0px 0px;
+border: 2px solid var(--grey-2, #E6E6E6);
+background: var(--white, #FFF);
+box-shadow: 0px 25px 35px 0px rgba(245, 98, 98, 0.03), 0px 0px 5px 0px rgba(0, 0, 0, 0.05);
+cursor: pointer;
+}
+
+.tutor-card .content {
+    /* display: flex; */
+    /* justify-content: space-around; */
+}
+
+.tutor-card .content h1{
+    color: var(--color-primary-Dark-blue, #ed5c0e);
+
+/* H3 - Regular */
+font-family: Sofia Pro;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 150% */
+}
+
+.tutor-card .content h3{
+    color: var(--color-primary-Dark-blue, #01182D);
+
+/* H3 - Light */
+font-family: Sofia Pro;
+font-size: 16px;
+font-style: normal;
+font-weight: 300;
+line-height: 24px; /* 150% */
+}
+
+.tutor-card .content p{
+    color: var(--color-primary-Dark-blue, #01182D);
+
+/* Body1 - Light */
+font-family: Sofia Pro;
+font-size: 14px;
+font-style: normal;
+font-weight: 300;
+line-height: 18px; /* 128.571% */
+}
+
+
+
